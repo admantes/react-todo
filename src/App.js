@@ -27,8 +27,18 @@ class App extends Component {
      })
   }
 
+  deleteTodo = (e) => {
+	  var index = parseInt(e.target.name);
+	  let newTodos = [...this.state.todos]
+	  newTodos.splice(index, 1);
+	  console.log(`deleting ${index} `);
+	  this.setState({
+		todos: newTodos
+	  })
+  }
+  
   componentDidUpdate(){
-    console.log(this.state.todos);
+    //console.log(this.state.todos);
   }
   render()
   {
@@ -40,7 +50,7 @@ class App extends Component {
             <input value={this.state.curval} onChange={this.handleChange} /> 
             <input type="submit" />  
           </form>
-          <Todos todos={this.state.todos}></Todos>
+          <Todos todos={this.state.todos} deleteTodo={this.deleteTodo}></Todos>
       </div>
     );
   }

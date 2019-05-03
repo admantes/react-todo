@@ -1,11 +1,13 @@
 import React from 'react';
 
 const List = props => (
-  <ul>
+  <div className="list-box">
     {
-      props.todos.map((item, index) => <li key={index}>{item}</li>)
+      props.todos.map(   (item, index) => 
+	  <div className="list-item" key={item+index}>{item} <button onClick={props.deleteTodo} name={index}>x</button></div>  
+	  )
     }
-  </ul>
+  </div>
 );
 
 export default List;
